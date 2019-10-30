@@ -8,7 +8,7 @@ import com.github.tenx.volleyassignment.ui.main.callbacks.ResponseHandler;
 
 import java.util.List;
 
-public class DataManager {
+public class DataManager implements  DataManagerHelper {
 
     private static final String TAG = "DataManager";
 
@@ -24,8 +24,9 @@ public class DataManager {
     }
 
 
-    public void fetchUsers(final ResponseHandler callback){
-        apiInstance.initiateRequest(new ResponseHandler() {
+    @Override
+    public void getUsers(final ResponseHandler callback) {
+        apiInstance.getUsers(new ResponseHandler() {
             @Override
             public void onSuccess(List<UserResponse.User> data) {
                 callback.onSuccess(data);
@@ -35,6 +36,11 @@ public class DataManager {
                 callback.onError(data);
             }
         });
+    }
+
+    @Override
+    public void stopUserRequestQueue() {
+        apiInstance.stopUserRequestQueue();
     }
 
     //    function to provide  a single instance of Datamanager

@@ -22,7 +22,7 @@ public class MainPresenter {
 
 
     public void getUsers(){
-        this.dataManager.fetchUsers(new ResponseHandler() {
+        this.dataManager.getUsers(new ResponseHandler() {
             @Override
             public void onSuccess(List<UserResponse.User> data) {
                 view.onSuccess(data);
@@ -35,9 +35,14 @@ public class MainPresenter {
         });
     }
 
+    public void destroyRequest(){
+        this.dataManager.stopUserRequestQueue();
+    }
+
 
     interface View {
         void onSuccess(List<UserResponse.User> data);
         void onFailure(String text);
+
     }
 }

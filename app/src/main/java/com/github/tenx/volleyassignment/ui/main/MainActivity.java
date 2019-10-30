@@ -74,9 +74,15 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+//        destroy request queue
+        presenter.destroyRequest();
+
     }
 
-//    fetch user callback
+//
+
+
 
     @Override
     public void onSuccess(List<UserResponse.User> data) {

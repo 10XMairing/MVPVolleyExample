@@ -12,7 +12,7 @@ import com.github.tenx.volleyassignment.Api.models.UserResponse;
 import com.github.tenx.volleyassignment.ui.main.callbacks.ResponseHandler;
 import com.google.gson.Gson;
 
-public class ApiService {
+public class ApiService implements ApiServiceHelper{
 
 
 
@@ -35,7 +35,9 @@ public class ApiService {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    public void initiateRequest(final ResponseHandler callback){
+
+    @Override
+    public void getUsers(final ResponseHandler callback){
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -52,8 +54,8 @@ public class ApiService {
         requestQueue.add(request);
     }
 
-
-    public void stopRequestQueue(){
+    @Override
+    public void stopUserRequestQueue(){
 //        gonna ignore this for this project || usually you might want to pass this to the presenter
         if(requestQueue != null){
             requestQueue.cancelAll(USER_GET);
@@ -61,6 +63,7 @@ public class ApiService {
     }
 
 //    function to provide  a single instance of api service
+
 
     public static   ApiService getInstance(Context context){
         if(instance == null){
