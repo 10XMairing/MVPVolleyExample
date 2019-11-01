@@ -11,3 +11,5 @@
 |`UserResponse` | Model class for gson|
 |`UserAdapter` | RecyclerView to display list of users.|
 
+--Note that developers usually wont use a networking library like volley with an architecture as organized as this. Retrofit coupled with Rx-Java & Dagger is usually the most favoured Networking/Asynchronous/DI library for such a purpose--
+
