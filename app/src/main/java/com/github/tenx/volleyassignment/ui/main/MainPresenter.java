@@ -13,10 +13,12 @@ public class MainPresenter {
     private DataManager dataManager;
     private View view;
 
-    public MainPresenter(Context context, View view) {
+    public MainPresenter(Context context) {
         this.context = context;
         this.dataManager = DataManager.getInstance(context);
-        this.view = view;
+        if(context instanceof  MainPresenter.View){
+            this.view  = ( MainPresenter.View) context;
+        }
 
     }
 

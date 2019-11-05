@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
         mAdapter = new UserAdapter(context);
     }
 
-    private void initPresenter(Context context, MainPresenter.View callback){
-        presenter = new MainPresenter(context, callback);
+    private void initPresenter(Context context){
+        presenter = new MainPresenter(context);
     }
 
 //    setup adapters
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
         initViews();
         initAdapters(this);
         setUpAdapter(mAdapter, mRecyclerUser, this);
-        initPresenter(this, this);
+        initPresenter(this);
 
     }
 
